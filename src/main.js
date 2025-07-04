@@ -17,7 +17,9 @@ const map = new Map({
 
   // Default map display parameters: center coordinates and zoom level
   view: new View({
-    center: [11557167.27, 150529.06],
-    zoom: 10,
+    projection: 'EPSG:4326',
+    center: [0, 0],
+    center: [-122.61906834368548, 45.54754884458494],
+    zoom: 19,
   }),
 });
