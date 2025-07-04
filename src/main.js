@@ -1,24 +1,22 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import './style.css';
+import { Map, View } from 'ol';
+import TileLayer from 'ol/layer/Tile';
+import OSM from 'ol/source/OSM';
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+// Create a map instance
+const map = new Map({
+  // HTML element where the map will be initialized
+  target: document.getElementById('map'),
 
-setupCounter(document.querySelector('#counter'))
+  // List of layers on the map
+  layers: [
+    // Create a tile layer. The source of the tiles will be OpenStreetMap
+    new TileLayer({ source: new OSM() }),
+  ],
+
+  // Default map display parameters: center coordinates and zoom level
+  view: new View({
+    center: [11557167.27, 150529.06],
+    zoom: 10,
+  }),
+});
